@@ -204,7 +204,7 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
 
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     tex_out = '{aa}x2{bb:+}x{cc:+}'.format(aa=aa, bb=bb, cc=cc)
-    file = open(r'latex\\{}.tex'.format(tex_out), 'wt', encoding="utf-8")
+    file = open(r'latex\{}.tex'.format(tex_out), 'wt', encoding="utf-8")
 
     header = namedtuple('header', 'fsize doctype')
     coding = namedtuple('coding', 'coding module')
