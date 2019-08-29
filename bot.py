@@ -3,7 +3,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardRe
     KeyboardButton
 from telegram.ext import Updater, MessageHandler, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 import logging
-from solver.equation_solver import Solve_Square_Eq
+from equation_solver import Solve_Square_Eq
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

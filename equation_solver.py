@@ -4,7 +4,7 @@ import re
 import subprocess
 from collections import namedtuple
 
-from .GDriveFunc import GDriveUploadFile, GDriveCreateFolder
+from GDriveFunc import GDriveUploadFile, GDriveCreateFolder
 
 sin = r'\sin'
 cos = r'\cos'
