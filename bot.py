@@ -35,7 +35,7 @@ def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
 
-def send_solution(bot, update):
+def send_solution(bot, update, user_data):
     '''Send solution link'''
     msg = update.message.text
     if msg.startswith('eq:'):
