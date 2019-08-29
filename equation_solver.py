@@ -204,7 +204,7 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
 
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     tex_out = '{aa}x2{bb:+}x{cc:+}'.format(aa=aa, bb=bb, cc=cc)
-    file = open(r'latex\{}.tex'.format(tex_out), 'wt', encoding="utf-8")
+    file = open(r'{}.tex'.format(tex_out), 'wt', encoding="utf-8")
 
     header = namedtuple('header', 'fsize doctype')
     coding = namedtuple('coding', 'coding module')
@@ -255,7 +255,7 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    os.chdir(os.path.dirname(os.path.abspath(os.path.join(os.path.split(file.name)[0], 'latex'))))
+    # os.chdir(os.path.dirname(os.path.abspath(os.path.join(os.path.split(file.name)[0], 'latex'))))
 
     return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
 
@@ -263,7 +263,7 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
     #     os.startfile(r'{}.pdf'.format(tex_out))
 
     mime_type = 'application/pdf'
-    filename = r'latex\{}.pdf'.format(tex_out)
+    filename = r'{}.pdf'.format(tex_out)
     description = 'squared equation solution'
     parent_id = Solutions_folder
 
