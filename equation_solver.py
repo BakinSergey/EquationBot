@@ -3,6 +3,14 @@ import sys, os
 import re
 import subprocess
 from collections import namedtuple
+import logging
+
+# Enable logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+
 
 from GDriveFunc import GDriveUploadFile, GDriveCreateFolder
 
@@ -255,9 +263,11 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    os.chdir('latex')
+    os.chdir(r'latex')
 
     return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
+
+    logger.warning('pdflatex return: %s', str(return_value))
 
     mime_type = 'application/pdf'
     filename = r'latex/{}.pdf'.format(tex_out)
