@@ -41,8 +41,8 @@ def send_solution(bot, update):
     if msg.startswith('eq:'):
         # a, b, c = tuple(map(int, msg.split(':')[1].split))
         a, b, c = 2, 3, 4
-        # link = Solve_Square_Eq(aa=a, bb=b, cc=c)
-        link = '2'
+        link = Solve_Square_Eq(aa=a, bb=b, cc=c)
+
         resp_text = '{}x2{:+}x{:+}=0 solution: {}'.format(a, b, c, link)
         update.message.reply_text(resp_text)
     else:
@@ -60,7 +60,6 @@ def main():
     # dp.add_handler(CallbackQueryHandler(get_callback_from_button))
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    # dp.add_handler(CommandHandler("cat", sendcat))
     dp.add_handler(MessageHandler(Filters.text, send_solution))
 
     # log all errors
