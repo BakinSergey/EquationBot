@@ -255,7 +255,7 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    os.chdir('/latex')
+    os.chdir('latex')
 
     return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
 
