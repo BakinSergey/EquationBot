@@ -35,7 +35,7 @@ def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
 
-def send_solution(bot, update, user_data):
+def send_solution(bot, update):
     '''Send solution link'''
     msg = update.message.text
     if msg.startswith('eq:'):
@@ -44,9 +44,9 @@ def send_solution(bot, update, user_data):
         # link = Solve_Square_Eq(aa=a, bb=b, cc=c)
         link = '2'
         resp_text = '{}x2{:+}x{:+}=0 solution: {}'.format(a, b, c, link)
-        update.message.reply_text = resp_text
+        update.message.reply_text(resp_text)
     else:
-        update.message.reply_text = 'Формат сообщения: \'eq: A B C\' '
+        update.message.reply_text('Формат сообщения: \'eq: A B C\' ')
     # bot.send_message(chat_id=update.message.chat_id, text=resp_text)
 
 
@@ -61,7 +61,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     # dp.add_handler(CommandHandler("cat", sendcat))
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, send_solution))
 
     # log all errors
     dp.add_error_handler(error)
