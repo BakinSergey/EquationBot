@@ -270,8 +270,8 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
     logger.warning('pdflatex return: %s', str(return_value))
 
     mime_type = 'application/pdf'
-    # filename = r'latex/{}.pdf'.format(tex_out)
-    filename = r'{}.pdf'.format(tex_out)
+    filename = r'latex/ww.txt'
+    # filename = r'{}.pdf'.format(tex_out)
     description = 'squared equation solution'
     parent_id = Solutions_folder
 
