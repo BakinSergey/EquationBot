@@ -41,7 +41,8 @@ def send_solution(bot, update, user_data):
     if msg.startswith('eq:'):
         # a, b, c = tuple(map(int, msg.split(':')[1].split))
         a, b, c = 2, 3, 4
-        link = Solve_Square_Eq(aa=a, bb=b, cc=c)
+        # link = Solve_Square_Eq(aa=a, bb=b, cc=c)
+        link = '2'
         resp_text = '{}x2{:+}x{:+}=0 solution: {}'.format(a, b, c, link)
         update.message.reply_text = resp_text
     else:
