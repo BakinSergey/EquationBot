@@ -255,12 +255,9 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    # os.chdir(os.path.dirname(os.path.abspath(os.path.join(os.path.split(file.name)[0], 'latex'))))
+    os.chdir('latex')
 
     return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
-
-    # if return_value == 0:
-    #     os.startfile(r'{}.pdf'.format(tex_out))
 
     mime_type = 'application/pdf'
     filename = r'{}.pdf'.format(tex_out)
