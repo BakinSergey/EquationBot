@@ -263,14 +263,15 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    os.chdir(r'latex')
+    # os.chdir(r'latex')
 
     return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
 
     logger.warning('pdflatex return: %s', str(return_value))
 
     mime_type = 'application/pdf'
-    filename = r'latex/{}.pdf'.format(tex_out)
+    # filename = r'latex/{}.pdf'.format(tex_out)
+    filename = r'{}.pdf'.format(tex_out)
     description = 'squared equation solution'
     parent_id = Solutions_folder
 
