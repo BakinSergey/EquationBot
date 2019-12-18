@@ -1,0 +1,12 @@
+Для того чтобы бот функционировал нужно развернуть его на heroku.
+1. Скачать и установить heroku-CLI https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+2. При установке включаем Пути
+3. cmd: heroku login
+4. cmd: heroku create
+5. ИЗ ПАПКИ ПРОЕКТА: git push heroku master
+6. cmd:              heroku ps:scale web=1
+7. cmd: heroku open
+
+смотреть логи так: heroku logs --trail
+коды ошибок: https://devcenter.heroku.com/articles/error-codes
+ограничения бесплатного аккаунта на хероку: 

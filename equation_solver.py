@@ -4,13 +4,13 @@ import re
 import subprocess
 from collections import namedtuple
 import logging
+from pdflatex import PDFLaTeX
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-
 
 from GDriveFunc import GDriveUploadFile, GDriveCreateFolder
 
@@ -211,6 +211,9 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         eq_type = 'trim_c'
 
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+    os.chdir(r'latex')
+
     tex_out = '{aa}x2{bb:+}x{cc:+}'.format(aa=aa, bb=bb, cc=cc)
     file = open(r'{}.tex'.format(tex_out), 'wt', encoding="utf-8")
 
@@ -263,15 +266,19 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
         mode = '-interaction=batchmode'
         priv = '--admin'
 
-    # os.chdir(r'latex')
+    # return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
+    file = '{}.{}'.format(os.path.abspath(tex_out), 'tex')
+    pdfl = PDFLaTeX.from_texfile(os.path.abspath(file))
+    pdfl.set_output_directory('latex')
+    pdfl.set_jobname(tex_out)
 
-    return_value = subprocess.call(['pdflatex', ''.join(mode), os.path.abspath(tex_out)], shell=False)
+    pdf, log, completed_process = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
 
-    logger.warning('pdflatex return: %s', str(return_value))
+    # logger.warning('pdflatex return: %s', str(return_value))
 
     mime_type = 'application/pdf'
-    filename = r'latex/ww.txt'
-    # filename = r'{}.pdf'.format(tex_out)
+
+    filename = r'{}.pdf'.format(tex_out)
     description = 'squared equation solution'
     parent_id = Solutions_folder
 
@@ -281,5 +288,8 @@ def Solve_Square_Eq(aa, bb, cc, debug_mode=False):
                          parent_id=parent_id)
 
     return file_prefix.format(f['id'])
+
+
+Solve_Square_Eq(1, 2, 3)
 
 # print(prefix.format(GDriveCreateFolder(name='folder', parent_id='1xXnqTir21XIEA3TTr8Tz94IS8xLFkq-p')))
